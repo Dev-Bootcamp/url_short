@@ -3,7 +3,7 @@
   <p>Hello, world!</p>
   <ul>
     <% @urls.each do |u|%>
-    <li><a href="<%=u.alter%>"><%= u.alter%></a></li>
+    <li><a href="<%=u.alter%>"><%= u.alter%></a> (<%=u.count%>)</li>
     
     <% end %>
   </ul>  

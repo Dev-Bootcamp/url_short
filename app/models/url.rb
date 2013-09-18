@@ -4,8 +4,15 @@ class Url < ActiveRecord::Base
   validates :website, presence: true
 
   def newurl
-    @rand= rand(1..8999).to_s
+    @rand = rand(1..8999).to_s
     self.update_attributes(alter: @rand)
+    self.save
+  end
+
+  def countup
+    @count = self.count
+    @count += 1
+    self.update_attributes(count: @count) 
     self.save
   end
   
