@@ -55,6 +55,9 @@ post '/create_url' do
   if @url.valid?
     @url.update_attributes(count: 0)
     @url.newurl
+    if session[:id]
+      @url.update_attributes(user_id: session[:id])
+    end
     @url.save
     redirect to ('/')
   else

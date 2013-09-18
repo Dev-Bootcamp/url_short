@@ -7,17 +7,20 @@
     
     <% end %>
   </ul>  
-  <a href="/create_url" id="create_form">Create Form</a>
-<form id="login" action ="/login" method="POST">  
-  <input type="text" id="email" name="user[email]">
-  <input type="text" id="password" name="user[password]">
-  <input type="submit">
-</form>
-<br>
-<p>Create New User Account</p>
-<form id="create_user" action="/create_user" method="POST">
-  <input type="text" id="email" name="user[email]">
-  <input type="text" id="password" name="user[password]">
-  <input type="submit" value="Create!">
-</form>
+  <a href="/create_url" id="create_form">Create Short URL</a>
+  <br>
+  <h2>Account Control</h2>
+  <p>Login to Your User Account:</p>
+  <form id="login" action ="/login" method="POST">  
+    <input type="text" id="email" name="user[email]">
+    <input type="text" id="password" name="user[password]">
+    <input type="submit" value="Login!">
+  </form>
+  <br>
+  <p>Create New User Account:</p>
+  <form id="create_user" action="/create_user" method="POST">
+    <input type="text" id="email" name="user[email]">
+    <input type="text" id="password" name="user[password]">
+    <input type="submit" value="Create!">
+  </form>
 </div>
