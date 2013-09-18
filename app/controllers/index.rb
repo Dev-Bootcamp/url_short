@@ -1,5 +1,9 @@
+enable :sessions
+
+
 get '/' do
   # Look in app/views/index.erb
+
   @urls = Url.all
   erb :index
 end
@@ -9,6 +13,20 @@ get "/create_url" do
   erb :create_url 
 end
 
+get "/account/:id" do
+  if session[:id]
+    p session[:id]
+    @user =User.find(session[:id])
+    erb :account
+  else
+    redirect "/"
+  end  
+end
+
+get "/logout" do
+  session.clear
+  redirect to ('/')
+end
 
 get '/:id' do
   params[:id]
@@ -17,6 +35,19 @@ get '/:id' do
   @real.countup
   p @real.website
   redirect to ("http://#{@real.website}")
+end
+
+post "/login" do
+
+  session.clear
+  @user =User.authenticate(params[:user][:email],params[:user][:password])
+  if @user == nil
+    redirect "/"
+  else
+    @user=User.find_by_email(params[:user][:email])
+    session[:id]=@user.id
+    redirect "/account/#{@user.id}"  
+  end  
 end
 
 post '/create_url' do
