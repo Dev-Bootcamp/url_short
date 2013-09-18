@@ -62,5 +62,11 @@ post '/create_url' do
   end
 end
 
+post '/create_user' do
+  @user = User.create(params[:user])
+  session[:id] = @user.id
+  redirect to ('/account/:id')
+end
+
 
 
